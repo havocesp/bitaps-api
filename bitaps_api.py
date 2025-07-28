@@ -1,4 +1,5 @@
 import requests
+from security import safe_requests
 
 
 class BitApsForwarding:
@@ -39,7 +40,7 @@ class BitApsForwarding:
 
         headers = self.get_header(**auth_type)
 
-        return requests.get(url=self.base_url+path, headers=headers)
+        return safe_requests.get(url=self.base_url+path, headers=headers)
 
     def address_transactions(self, address, **auth_type):
         '''
@@ -49,7 +50,7 @@ class BitApsForwarding:
 
         headers = self.get_header(**auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers)
+        return safe_requests.get(url=self.base_url + path, headers=headers)
 
     def callback_log(self, address, **auth_type):
         '''
@@ -59,7 +60,7 @@ class BitApsForwarding:
 
         headers = self.get_header(**auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers)
+        return safe_requests.get(url=self.base_url + path, headers=headers)
 
     # to access the following API, the token is required
 
@@ -78,7 +79,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers, params=payload)
+        return safe_requests.get(url=self.base_url + path, headers=headers, params=payload)
 
     def transactions_list(self, start, to, limit, page, type, domain_hash, **auth_type):
         '''
@@ -97,7 +98,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers, params=payload)
+        return safe_requests.get(url=self.base_url + path, headers=headers, params=payload)
 
     def created_addresses_list(self, start, to, limit, page, domain_hash, **auth_type):
         '''
@@ -114,7 +115,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers, params=payload)
+        return safe_requests.get(url=self.base_url + path, headers=headers, params=payload)
 
     def domain_statistics(self, domain_hash, **auth_type):
         '''
@@ -124,7 +125,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers)
+        return safe_requests.get(url=self.base_url + path, headers=headers)
 
     def create_access_token(self, callback_link):
         '''
