@@ -12,7 +12,7 @@ class BitApsForwarding:
     def generate_address(self, payload):
         path = '/create/payment/address'
 
-        return requests.post(url=self.base_url + path, json=payload)
+        return requests.post(url=self.base_url + path, json=payload, timeout=60)
 
     def get_header(self, token_only=False, **auth_type):
         headers = {}
@@ -39,7 +39,7 @@ class BitApsForwarding:
 
         headers = self.get_header(**auth_type)
 
-        return requests.get(url=self.base_url+path, headers=headers)
+        return requests.get(url=self.base_url+path, headers=headers, timeout=60)
 
     def address_transactions(self, address, **auth_type):
         '''
@@ -49,7 +49,7 @@ class BitApsForwarding:
 
         headers = self.get_header(**auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers)
+        return requests.get(url=self.base_url + path, headers=headers, timeout=60)
 
     def callback_log(self, address, **auth_type):
         '''
@@ -59,7 +59,7 @@ class BitApsForwarding:
 
         headers = self.get_header(**auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers)
+        return requests.get(url=self.base_url + path, headers=headers, timeout=60)
 
     # to access the following API, the token is required
 
@@ -78,7 +78,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers, params=payload)
+        return requests.get(url=self.base_url + path, headers=headers, params=payload, timeout=60)
 
     def transactions_list(self, start, to, limit, page, type, domain_hash, **auth_type):
         '''
@@ -97,7 +97,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers, params=payload)
+        return requests.get(url=self.base_url + path, headers=headers, params=payload, timeout=60)
 
     def created_addresses_list(self, start, to, limit, page, domain_hash, **auth_type):
         '''
@@ -114,7 +114,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers, params=payload)
+        return requests.get(url=self.base_url + path, headers=headers, params=payload, timeout=60)
 
     def domain_statistics(self, domain_hash, **auth_type):
         '''
@@ -124,7 +124,7 @@ class BitApsForwarding:
 
         headers = self.get_header(token_only=True, **auth_type)
 
-        return requests.get(url=self.base_url + path, headers=headers)
+        return requests.get(url=self.base_url + path, headers=headers, timeout=60)
 
     def create_access_token(self, callback_link):
         '''
@@ -135,7 +135,7 @@ class BitApsForwarding:
             "callback_link": callback_link
         }
 
-        return requests.post(url=self.base_url + path, json=payload)
+        return requests.post(url=self.base_url + path, json=payload, timeout=60)
 
     def create_authorization_code(self, callback_link):
         '''
@@ -146,4 +146,4 @@ class BitApsForwarding:
             "callback_link": callback_link
         }
 
-        return requests.post(url=self.base_url + path, json=payload)
+        return requests.post(url=self.base_url + path, json=payload, timeout=60)
